@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Hiragino Sans GB', 'Microsoft Yahei UI', 'Microsoft Yahei', 微软雅黑, 'Segoe UI', Tahoma, 宋体b8b体, SimSun, sans-serif;
+}
+input, textarea, button {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    resize: none;
+    font-family: "Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","微软雅黑",'Segoe UI',Tahoma,"宋体b8b\4f53",SimSun,sans-serif;
+}
+.im {
+    position: fixed;
+    bottom: 0;
+    right: -1px;
+    z-index: 99;
+    transition: bottom 0.2s;
+    -webkit-transition: bottom 0.2s;
+    height: 400px;
+    .im-shandow {
+	    box-shadow: 0 0 30px 0 rgba(0,0,0,0.45);
+	    overflow: hidden;
+	}
+	&.im-fold{
+	bottom:-359px;
+	transition:bottom .2s;
+	-webkit-transition:bottom .2s;
+}
+	.im-wrap{
+		position: relative;
+		float: right;
+		z-index: 2;
+		.im-head {
+		    width: 200px;
+		    height: 40px;
+		    line-height: 40px;
+		    padding-left: 40px;
+		    border-bottom: 1px solid #ddd;
+		    background: url(../img/im.png) no-repeat 12px 12px;
+		    cursor: pointer;
+		    .im-head-title {
+			    margin-right: 5px;
+			    vertical-align: middle;
+			}
+			.im-head-mun{
+				display: inline-block;
+				height: 16px;
+				line-height: 16px;
+				padding:0 5px;
+				border-radius: 8px;
+				font-size:12px;
+			}
+			.im-head-clasebtn{
+				float: right;
+				display: block;
+				width:40px;
+				height: 40px;
+				text-indent: 99em;
+				overflow: hidden;
+				background: url(../img/im.png) no-repeat 12px -108px;
+			}
+		}
+		.im-body {
+		    height: 393px;
+		    overflow-x: hidden;
+		    overflow-y: auto;
+		    .noagent{
+	            margin-top:85px;
+	            padding-top:90px;
+	            text-align: center;
+	            background: url(../img/noagent.png) no-repeat 50% 0;
+		        .noagent-title{
+		        	padding-bottom: 10px;
+		        	color:#5a5a5a;
+		        	line-height: 16px;
+		        	font-size: 16px;
+		        	font-weight: 700;
+		        }
+		        .noagent-sub{
+		        	color:#888;
+		        	font-size: 12px;
+		        }
+		    }
+		    .im-listitem-container{
+		    	li{
+		    		height:42px;
+		    		line-height: 42px;
+		    		padding:0 10px;
+		    		border-bottom:1px solid #ddd;
+		    		img{
+		    			display: inline-block;
+		    			margin-right:10px;
+		    			border-radius: 50%;
+		    		}
+		    	}
+		    }
+		}
+	}
+	.im-window{
+        position: relative;
+        float: right;
+        width:380px;
+        height:434px;
+        border-right:1px solid #ddd;
+        background: #fff;
+        z-index: 1;
+        display: none;
+        .im-wintitle{
+        	position: relative;
+        	height: 40px;
+        	line-height: 40px;
+        	i{
+        		display: inline-block;
+			    width: 8px;
+			    height: 8px;
+			    margin: 0 2px 0 14px;
+			    border-radius: 50%;
+			    text-indent: 999em;
+			    overflow: hidden;
+			    background: #009de8;
+        	}
+        	.im-wt-name{
+        		font: 400 14px/40px "microsoft yahei","\5FAE\8F6F\96C5\9ED1","simhei","\9ED1\4F53","san-serif";
+			    color: #333;
+        	}
+        	.im-wt-closebtn{
+        		position: absolute;
+			    right: 15px;
+			    top: 13px;
+			    display: block;
+			    width: 14px;
+			    height: 14px;
+			    text-indent: 999em;
+			    overflow: hidden;
+			    background: url("../img/im.png") no-repeat 0 -91px;
+			    cursor: pointer;
+        	}
+        }
+        .im-wincont{
+            .im-wc-chat{
+            	height: 235px;	
+            	border-bottom: 1px solid #e0e0e0;
+			    background: #f3f3f3;
+			    overflow: auto;
+			    .im-window-msgcontainer{
+			    	position: relative;
+			    	.chat-block{
+			    		margin:24px 0;
+			    	}
+			    }
+			    .chat-avatar{
+			    	width: 59px;
+			    	text-align: center;
+			    	a{
+			    		display: inline-block;
+			    		vertical-align: top;
+			    	}
+			    	img{
+			    		border-radius: 50%;
+			    	}
+			    }
+			    .chat-content{
+			    	position: relative;
+			    	max-width: 220px;
+			    	min-height: 20px;
+			    	padding: 10px;
+			    	border-radius: 5px;
+			    	word-break: break-all;
+			    	i{
+			    		position: absolute;
+			    		top: 0;
+			    		display: block;
+			    		width: 6px;
+			    		height: 6px;
+			    		font-size: 0;
+			    	}
+			    	p{
+			    		font: 400 12px/20px "microsoft yahei","\5FAE\8F6F\96C5\9ED1","simhei","\9ED1\4F53","san-serif";
+			    	}
+			    }
+			    .chat-time{
+			    	color:#aaa;
+			    	font-size:12px;
+			    	text-align:center;
+			    }
+			    .chat-out{
+			    	.chat-content{
+			    		color:#fff;
+			    		background: #009de8;
+			    		float:right;
+				    	border-top-right-radius: 0;
+				    	i{
+				    		right: -6px;
+				    		background: url(../img/bg_b.png) no-repeat;
+				    	}
+				    }
+    			    .chat-avatar{
+				    	float:right;
+				    	border-top-right-radius: 0;
+				    }
+			    }
+			    .chat-in{
+			    	.chat-avatar{
+			    		float: left;
+				    	border-top-left-radius: 0;
+			    	}
+			    }
+            }
+            .im-wc-input{
+            	.im-input-container {
+				    position: relative;
+				    width: 339px;
+				    height: 28px;
+				    margin: 10px 9px 0 10px;
+				    padding: 10px 10px 23px 10px;
+				    border: 1px solid #d9d9d9;
+				    textarea{
+				    	width: 339px;
+					    height: 28px;
+					    border: none;
+					    color: #999;
+					    line-height: 14px;
+					    font-size: 12px;
+					    background: #fff;
+					    overflow: hidden;
+				    }
+				}
+				.im-btn-container{
+				    height: 50px;
+				    padding: 0 9px 0 15px;
+				    line-height: 50px;
+				    input{
+					    float: right;
+					    display: inline-block;
+					    width: 81px;
+					    height: 31px;
+					    margin: 10px 0 9px 0;
+					    padding: 0;
+					    border: 0;
+					    border-radius: 0;
+					    line-height: 31px;
+					    color: #fff;
+					    text-align: center;
+					    background: #009de8;
+					    cursor: pointer;
+					}
+				}
+            }
+        }
+	}
+}

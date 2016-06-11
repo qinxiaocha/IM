@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IM</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/im.css">
+
+</head>
+<body>
+    <div class="im">
+        <div class="im-shandow">
+            <div class="im-wrap">
+            	<div class="im-head">
+		    		<span class="im-head-title">Contacts</span>
+		    		<span class="im-head-mun">0</span><span style="font-size:12px;">人在线</span>
+		    		<a class="im-head-clasebtn">收起</a>
+		    	</div>
+		    	<div class="im-body">
+		    		<ul class="im-listitem-container">
+		    			<!-- 放置上线的客服人员列表 -->
+		    		</ul>
+		    		<div class="noagent">
+		    			<div class="noagent-title">
+		    				没有人在线
+		    			</div>
+		    			<div class="noagent-sub">
+		    				等等吧
+		    			</div>
+		    		</div>
+		    	</div>
+            </div>
+            <div class="im-window">
+            	<div class="im-wintitle">
+            		<i>在线</i>
+            		<span class="im-wt-name">target name</span>
+            		<a class="im-wt-closebtn" title="关闭">关闭</a>
+            	</div>
+            	<div class="im-wincont">
+            		<div class="im-wc-chat">
+            			<ul class="im-window-msgcontainer" id="im-window-msgcontainer">
+            				<li class="chat-time">14:22</li>
+            			</ul>
+            		</div>
+            		<div class="im-wc-input">
+            			<div class="im-input-container">
+            				<textarea name="" id="message" placeholder="点击输入您想要聊的事…"></textarea>
+            				<a class="im-input-insertpic" title="插入图片"></a>
+            			</div>
+            			<div class="im-btn-container">
+		            		<input type="button" value="发送" id="send">
+		            	</div>
+            		</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+    <!--build:js js/main.min.js -->
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/sockjs.js"></script>
+    <script src="js/stomp.js"></script>
+    <script src="js/SocketClient.js"></script>
+
+    <!-- endbuild -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // $(window).keydown(function(e){
+            //  if(!confirm('刷新将会清除所有聊天记录，确定要刷新吗？')){
+            //      e.preventDefault();
+            //  }
+            // })
+            // var socket = io.connect('ws://10.22.72.97:8080/ldq/echo');
+            connection("10.22.72.97:8080/ldq/echo", "10.22.72.97:8080/ldq/sockjs/echo");
+            $('.im-wt-closebtn').click(function(){
+                $('.im-window').hide();
+            });
+
+            $('.im .im-head').click(function(){
+                $('.im').toggleClass('im-fold');
+                $('.im-window').hide();
+            });
+
+
+            $('#send').bind('click',function(){
+                var message = $('#message');
+                send(message.val());
+                message.val('').focus();
+            });
+
+
+            $('#message').keydown(function(event){
+                if (event.keyCode == 13) {
+                    $('#send').click();
+                }
+            })
+        });
+    </script>
+</body>
+</html>
